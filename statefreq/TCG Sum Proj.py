@@ -23,15 +23,18 @@ for i in range(len(df)):
     index = key[i]
     if df[index]["Unnamed: 2"].dtype == 'O':
         data[index] = df[index]["Unnamed: 2"].dropna()
+        data[index] = [j for j in data[index] if not isinstance(j, int)]
 
 
-# In[4]:
+# In[6]:
 
 
 data
 
 
 # In[ ]:
+
+
 
 
 

@@ -22,5 +22,5 @@ doc = docx.Document()
 for key,values in free_responses.items():
     doc.add_paragraph(key)
     for res in values:
-        doc.add_paragraph(res)
+        doc.add_paragraph(res,style='List Bullet 2')
 doc.save('output.docx')

@@ -3,17 +3,16 @@ workbook = load_workbook(filename="Survey.xlsx")
 
 free_responses={}
 for sheet in workbook.worksheets:
-    for i in range(1,20):
+    for i in range(1,50):
         s=sheet[f"A{i}"].value
-        if s =='Respondent ID':
-            #print(sheet.title)
+        if s =='Respondent ID': # if the question is free-response
             res=[]
-            for cell in sheet['C']:
-                if (cell.value!=None) and (cell.value!='Responses'):
-                    res.append(cell.value) # add res to that single question 
+            #for cell in sheet[f'C{i+1}:C1048576']:
+            for value in sheet.iter_rows(min_row=i+1,min_col=3, max_col=3,values_only=True):
+                if (value[0]!=None):
+                    res.append(value[0]) # add res to that single question 
             #print(res)
             free_responses[sheet.title]=res  #add list of res to one question to the big list
-            
             break
 
 import docx

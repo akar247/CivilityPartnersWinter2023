@@ -11,7 +11,7 @@ import numpy as np
 # In[2]:
 
 
-df = pd.read_excel(r"C:\Users\kelly\Downloads\Vaxart Survey 2021.xlsx", None)
+df = pd.read_excel("Vaxart Survey 2021.xlsx", None)
 
 
 # In[3]:
@@ -30,7 +30,10 @@ for i in range(len(df)):
 
 
 data
-
+for i in range(len(data)):
+    print(list(data.keys())[i])
+    print(data[list(data.keys())[i]])
+    break
 
 # In[ ]:
 

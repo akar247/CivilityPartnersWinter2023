@@ -1,10 +1,4 @@
 from openpyxl import load_workbook
-
-workbook = load_workbook(filename="Survey.xlsx") 
-#workbook.sheetnames
-#workbook.worksheets
-import docx
-
 from openpyxl.chart import BarChart, Series, Reference
 from openpyxl.chart.label import DataLabelList
 wb = load_workbook(filename="Survey.xlsx") 

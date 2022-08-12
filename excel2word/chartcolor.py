@@ -8,15 +8,6 @@ ws = wb.active
 #workbook.worksheets
 import docx
 
-for ws in wb.worksheets:
-    
-    
-    for row in ws.iter_rows(min_col=1, max_col=1):
-        if row[0].value is None or row[0].value == "Reason":
-            maxrowchart = row[0].row - 1
-            print(row[0].row - 1)
-            break
-        
 
 for ws in wb.worksheets:
         for row in ws.iter_rows(min_col=1, max_col=1):

@@ -8,7 +8,7 @@ df = pd.read_excel("Vaxart Survey 2021.xlsx", None)
 def freq(n_range, text):
     sw = stopwords.words('english') + ['really']
 
-    vector = CountVectorizer(stop_words=sw, ngram_range=(3,3))
+    vector = CountVectorizer(stop_words=sw, ngram_range=(2,2))
     ngrams = vector.fit_transform(text)
     count_values = ngrams.toarray().sum(axis=0)
     vocab = vector.vocabulary_

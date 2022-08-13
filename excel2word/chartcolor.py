@@ -9,7 +9,11 @@ ws = wb.active
 import docx
 
 
+
+
+
 for ws in wb.worksheets:
+        
         for row in ws.iter_rows(min_col=1, max_col=1):
             if row[0].value is None or row[0].value == "Reason":
                 maxrowchart = (row[0].row - 1)
@@ -29,6 +33,12 @@ for ws in wb.worksheets:
                 # the top-left corner of the chart
                 # is anchored to cell F2 .
         chart.varyColors = "000F0FFF"
-        ws.add_chart(chart,"H2")
-
+        
+        for i in range(1,50):
+                s=ws[f"A{i}"].value
+                if s == 'Answer Choices': 
+                        ws.add_chart(chart,"H2")
+                
+                        
+        
 wb.save("test.xlsx")

@@ -4,6 +4,7 @@ from tkinter import font
 from tkinter.ttk import Progressbar
 from tkinter.ttk import Scrollbar
 from openpyxl import load_workbook
+from win32com.client import Dispatch
 import docx
 workbook = load_workbook(filename="Survey.xlsx") 
 
@@ -35,9 +36,7 @@ def open_xfile():
     global xfile
     xfile = filedialog.askopenfilename(title='open a file',filetypes=(('excel files','*.xls'),('excel files','*.xlsx')))
     lbl_filename.config(text=xfile[:25],fg='grey')
-    extract_images()
-
-from win32com.client import Dispatch
+    extract_FR()
 
 def extract_images():
     global xfile
@@ -55,10 +54,12 @@ def extract_images():
 
     workbook.Close(SaveChanges=False, Filename=xfile)
     lbl_message.configure(text='Extracted Images')
-    extract_FR()
+    # extract_FR()
 
 def extract_FR():
     global xfile
+    workbook = load_workbook(filename=xfile) 
+    
     free_responses={}
     for sheet in workbook.worksheets:
         for i in range(1,50):
@@ -72,16 +73,14 @@ def extract_FR():
                 #print(res)
                 free_responses[sheet.title]=res  #add list of res to one question to the big list
                 break
-
+                
     doc = docx.Document()
     for key,values in free_responses.items():
         doc.add_paragraph(key)
         for res in values:
             doc.add_paragraph(res,style='List Bullet 2')
-    lbl_message.configure(text='Extracted Free Responses')
-    save = xfile[:-5] + 'Converted.docx'
-    doc.save(save)
-
+    doc.save(xfile[:-5]+'Grabbed.docx')
+    lbl_message.configure(text='Extracted Text')
 
 
 

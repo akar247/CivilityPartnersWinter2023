@@ -31,7 +31,7 @@ from pptx.enum.chart import XL_CHART_TYPE, XL_LEGEND_POSITION, XL_DATA_LABEL_POS
 
 document = Document()
 chart_data = CategoryChartData()
-chart_data.categories = ['Strongly Disagree', 'Disagree', 'Agree', "Strongly Agree"]
+chart_data.categories = ['Strongly Disagree', 'Disagree', 'Agree', 'Strongly Agree']
 chart_data.add_series('Series 1', (19.2, 21.4, 16.7))
 x, y, cx, cy = Inches(2), Inches(2), Inches(6), Inches(4.5)
 chart = document.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED, x, y, cx, cy, chart_data)

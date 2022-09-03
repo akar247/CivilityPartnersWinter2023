@@ -4,7 +4,6 @@ from tkinter import font
 from tkinter.ttk import Progressbar
 from tkinter.ttk import Scrollbar
 from openpyxl import load_workbook
-from win32com.client import Dispatch
 import docx
 workbook = load_workbook(filename="Survey.xlsx") 
 
@@ -40,10 +39,8 @@ def open_xfile():
 
 def extract_images():
     global xfile
-    app = Dispatch("Excel.Application")
-    workbook = app.Workbooks.Open(Filename=xfile)
-
-    app.DisplayAlerts = False
+    # app = Dispatch("Excel.Application")
+    # workbook = app.Workbooks.Open(Filename=xfile)
 
     # i = 1
     for sheet in workbook.Worksheets:

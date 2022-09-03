@@ -13,8 +13,11 @@ import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords 
 from nltk.stem.snowball import SnowballStemmer
-import numpy as np
+import torch
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import re
 
+import time
 #UI
 bg_button = 'sea green'
 msg = 'blue'
@@ -55,6 +58,8 @@ stemmer = SnowballStemmer(language = "english")
 stopwords = set(stopwords.words('english')) 
 xfile = ''
 error=False
+tokenizer = AutoTokenizer.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
+model = AutoModelForSequenceClassification.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
 
 #Universal Vars
 #list of classes they want
@@ -88,6 +93,14 @@ def grab_data():
     
     return data   
     
+def sentiment_score(response): 
+    """
+        Sentiment Ranking between 1-5
+    """
+    tokens = tokenizer.encode(response, return_tensors='pt')
+    result = model(tokens)
+    return int(torch.argmax(result.logits))+1
+
 def class_choice():
     global class_var, c1_kw, c2_kw, c3_kw, c4_kw, c5_kw, classes, kws, xfile, error
     reset_screen()
@@ -175,6 +188,11 @@ def classify():
             else:
                 temp_cat = classes[sims.index(max(sims))]
                 classified[temp_cat].append(response)
+    
+    for c in classified:
+        classified[c] = sentiment_score(classified[c])
+        
+        
         
     with open('practice.txt', 'w') as f:
         for key in classified:

@@ -8,7 +8,7 @@ from os.path import exists
 import csv
 import ntpath
 import pandas as pd
-
+import docx
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords 
@@ -188,19 +188,32 @@ def classify():
             else:
                 temp_cat = classes[sims.index(max(sims))]
                 classified[temp_cat].append(response)
-    
+    doc = docx.Document()
     for c in classified:
-        classified[c] = sentiment_score(classified[c])
+        doc.add_paragraph(c)
+        # classified[c] = sentiment_score(classified[c])
+        df25=pd.DataFrame(classified[c], columns=['response'])
+        df25.iloc[0]
+        sentiment_score(df25['response'].iloc[1])
+        df25['sentiment'] = df25['response'].apply(lambda x: sentiment_score(x[:512]))
+        df25 = df25.sort_values('sentiment', ascending=False)
+        for x,y in zip(df25['response'],df25['sentiment']):
+            if y>3:
+                doc.add_paragraph('+'+x,style='List Bullet 2')
+            elif y<3:
+                doc.add_paragraph('-'+x,style='List Bullet 2')
+    doc.save('output.docx')
         
         
         
-    with open('practice.txt', 'w') as f:
-        for key in classified:
-            f.write(key.upper()+'\n')
-            for val in classified[key]:
-                f.write('\t\t'+val+'\n')
-            f.write('\n\n')
-    print(classified)
+        
+    # with open('practice.txt', 'w') as f:
+    #     for key in classified:
+    #         f.write(key.upper()+'\n')
+    #         for val in classified[key]:
+    #             f.write('\t\t'+val+'\n')
+    #         f.write('\n\n')
+    # print(classified)
     return classified
             
             

@@ -3,11 +3,16 @@ import numpy as np
 
 
 file = 'Vaxart Survey 2021.xlsx'
+statements = {}
 
 
 def read_excel_questions(fp):
     sheets = pd.ExcelFile(fp).sheet_names
-    q_data = [(sheet, pd.read_excel(fp, sheet_name=sheet, header=2)) for sheet in sheets]
+    q_data = []
+    
+    for sheet in sheets:
+        q_data.append((sheet, pd.read_excel(fp, sheet_name=sheet, header=2)))
+        statements[sheet] = pd.read_excel(fp, sheet_name=sheet).iloc[0,0]
     return q_data
 
 read_excel_questions(file)
@@ -25,9 +30,9 @@ def mc_data(dfs):
             pos = df['Responses'].iloc[2:4].sum()
 
             if neg >= .25:
-                tholds['Negative'].append((sheet, neg))
+                tholds['Negative'].append((sheet, statements[sheet], round(neg, 2)))
             elif pos >= .90:
-                tholds['Positive'].append((sheet, pos))
+                tholds['Positive'].append((sheet, statements[sheet], round(pos, 2)))
             else:
                 tholds['Neutral'].append(sheet)
     
@@ -40,11 +45,13 @@ def write_txt(dict):
     with open('thresholds.txt', 'w') as f:
         f.write('Negatives:\n')
         for qt in dict['Negative']:
-            f.write('\t' + str(qt) + '\n')
+            f.write('\t' + str(qt[0]) + '\n')
+            f.write('\t\t' + str(qt[1]) + " ({:.0%}) ".format(qt[2]) + '\n\n')
         f.write('\n\n')
         f.write('Positives:\n')
         for qt in dict['Positive']:
-            f.write('\t' + str(qt) + '\n')
+            f.write('\t' + str(qt[0]) + '\n')
+            f.write('\t\t' + str(qt[1]) + " ({:.0%}) ".format(qt[2]) + '\n\n')
 
 write_txt(mc_tholds)
 

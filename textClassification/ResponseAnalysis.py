@@ -14,7 +14,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords 
 from nltk.stem.snowball import SnowballStemmer
 import torch
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 import re
 
 import time
@@ -58,8 +58,10 @@ stemmer = SnowballStemmer(language = "english")
 stopwords = set(stopwords.words('english')) 
 xfile = ''
 error=False
-tokenizer = AutoTokenizer.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
-model = AutoModelForSequenceClassification.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
+tokenizer = AutoTokenizer.from_pretrained("DhruvK0/test_trainer")
+model = AutoModelForSequenceClassification.from_pretrained("DhruvK0/test_trainer")
+classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
+
 
 #Universal Vars
 #list of classes they want
@@ -95,11 +97,10 @@ def grab_data():
     
 def sentiment_score(response): 
     """
-        Sentiment Ranking between 1-5
+        Sentiment analysis between positive or negative
     """
-    tokens = tokenizer.encode(response, return_tensors='pt')
-    result = model(tokens)
-    return int(torch.argmax(result.logits))+1
+    
+    return classifier(response)[0]['label']
 
 def class_choice():
     global class_var, c1_kw, c2_kw, c3_kw, c4_kw, c5_kw, classes, kws, xfile, error

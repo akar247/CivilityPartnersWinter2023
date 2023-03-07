@@ -272,9 +272,9 @@ def classify():
         df25['sentiment'] = df25['response'].apply(lambda x: sentiment_score(x[:512]))
         df25 = df25.sort_values('sentiment', ascending=False)
         for x,y in zip(df25['response'],df25['sentiment']):
-            if y>3:
+            if y == "POSITIVE":
                 doc.add_paragraph('+'+x,style='List Bullet 2')
-            elif y<3:
+            elif y == "NEGATIVE":
                 doc.add_paragraph('-'+x,style='List Bullet 2')
     doc.save('output.docx')
         

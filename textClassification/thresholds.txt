@@ -1,0 +1,163 @@
+Negatives:
+	Question 4
+		I have confidence in the leadership of this organization. (26%) 
+
+	Question 7
+		I receive recognition or praise for doing good work often enough to suit me. (29%) 
+
+	Question 12
+		I receive information to do my job in a timely manner. (36%) 
+
+	Question 15
+		I have the right amount of work-life balance. (33%) 
+
+	Question 19
+		I have a clear understanding of my organization’s vision/mission. (29%) 
+
+	Question 20
+		I trust the decisions top leadership makes, even if I don't understand "the why" behind them. (26%) 
+
+	Question 23
+		The leadership team is present and accessible enough for me. (31%) 
+
+	Question 41
+		My total compensation package. (27%) 
+
+	Question 43
+		My possibilities for career progression within the organization. (34%) 
+
+	Question 46
+		The process for evaluating my job performance. (32%) 
+
+	Question 47
+		The organization’s overall efficiency of operation. (41%) 
+
+	Question 48
+		The overall quality of the organization’s products. (41%) 
+
+	Question 49
+		Our marketing and messaging to the market. (43%) 
+
+	Question 50
+		The way work is delegated among employees. (32%) 
+
+	Question 52
+		The organization’s system for taking staff complaints/hearing out problems. (38%) 
+
+	Question 56
+		Information about company policies. (29%) 
+
+	Question 57
+		Information about company vision and goals. (29%) 
+
+	Question 61
+		Information about how to get a bonus or promotion.  (49%) 
+
+	Question 62
+		Information about company stock options. (32%) 
+
+	Question 63
+		The internal company newsletter. (44%) 
+
+	Question 65
+		Extent to which directives are clear and concise. (37%) 
+
+	Question 66
+		Amount of job training I have received. (34%) 
+
+	Question 67
+		Topics covered in the job training. (30%) 
+
+	Question 68
+		Information about changes in the organization. (40%) 
+
+	Question 69
+		Information about the company’s successes and failures. (46%) 
+
+	Question 70
+		Information about profits and/or financial standing. (35%) 
+
+	Question 71
+		Extent to which conflict is handled appropriately. (30%) 
+
+	Question 73
+		Extent of communication between teams or departments. (27%) 
+
+	Question 74
+		Quality of communication/relationships between teams or departments. (37%) 
+
+	Question 76
+		The amount of facetime I have with the CEO. (25%) 
+
+	Question 81
+		Within the last year, I have personally experienced or witnessed discriminatory or bullying comments or behaviors at work. (78%) 
+
+	Question 92
+		Gender (80%) 
+
+	Question 93
+		Age (29%) 
+
+	Question 94
+		Tenure (68%) 
+
+	Question 95
+		Department  (34%) 
+
+
+
+Positives:
+	Question 3
+		I can openly communicate with my immediate supervisor, even if things are going wrong. (95%) 
+
+	Question 6
+		I enjoy the work I do. (95%) 
+
+	Question 11
+		I am provided the resources I need to perform my work properly. (90%) 
+
+	Question 13
+		I feel physically safe at work. (98%) 
+
+	Question 14
+		I feel safe to be my whole self at work. (90%) 
+
+	Question 17
+		I have the right amount of flexibility in my work. (90%) 
+
+	Question 22
+		I feel as though I have a part in accomplishing this organization’s goals. (95%) 
+
+	Question 28
+		My coworkers get along with each other. (93%) 
+
+	Question 29
+		Overall, my supervisor does a good job.  (90%) 
+
+	Question 30
+		My supervisor actively listens to my suggestions.  (95%) 
+
+	Question 32
+		My supervisor promotes an atmosphere of teamwork.  (95%) 
+
+	Question 36
+		When I have questions or concerns, my supervisor is able to address them.  (93%) 
+
+	Question 37
+		I have a say in decisions that affect my job. (90%) 
+
+	Question 51
+		My freedom to carry out my job responsibilities and tasks without micromanagement. (95%) 
+
+	Question 60
+		Information about how my role here impacts other roles. (90%) 
+
+	Question 79
+		This organization cultivates an environment where people of many backgrounds are welcomed and valued. (95%) 
+
+	Question 80
+		Negative or exclusive behavior (e.g., inappropriate jokes, incivility, bullying) is not tolerated here. (90%) 
+
+	Question 82
+		I have confidence that my manager will handle concerns about equality and inclusion appropriately. (93%) 
+

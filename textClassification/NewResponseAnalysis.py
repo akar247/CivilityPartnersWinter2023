@@ -137,7 +137,7 @@ def thresholds(filename):
         return tholds
 
     def write_txt(dict):
-        with open('thresholds.txt', 'w') as f:
+        with open(file.split('.')[0] + '_thresholds.txt', 'w') as f:
             f.write('Negatives:\n')
             for qt in dict['Negative']:
                 f.write('\t' + str(qt[0]) + '\n')
@@ -320,7 +320,7 @@ def classify():
                     doc.add_paragraph('+' + x, style='List Bullet 2')
                 elif y == "NEGATIVE":
                     doc.add_paragraph('-' + x, style='List Bullet 2')
-        doc.save('output.docx')
+        doc.save(file.split('.')[0] + '_output.docx')
 
     else:
         data['Output'] = data['text'].apply(sentiment_score)
@@ -335,7 +335,7 @@ def classify():
 
         data.apply(add_to_docx, axis=1)
 
-        doc.save('output.docx')
+        doc.save(file.split('.')[0] + '_output.docx')
 
         return
 
